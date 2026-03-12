@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alchemica — Element Fusion Game</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Rajdhani:wght@300;400;500;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!--Petra please put more comments so I can understand what you do -->
+
+    
+  <!-- ── HEADER ── -->
+  <header>
+    <h1>⚗ Alchemica</h1>
+    <p>Element Fusion Laboratory</p>
+    <div class="score-bar">
+      <div class="score-item">
+        <span class="val" id="score">0</span>
+        <span class="lbl">Score</span>
+      </div>
+      <div class="score-item">
+        <span class="val" id="discovered">0</span>
+        <span class="lbl">Discovered</span>
+      </div>
+      <div class="score-item">
+        <span class="val" id="total-compounds">--</span>
+        <span class="lbl">Total</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN GAME LAYOUT ── -->
+  <div class="game-wrap">
+
+    <!-- FUSION ARENA -->
+    <div class="arena">
+      <div class="arena-title">Fusion Chamber</div>
+
+      <div class="slots">
+        <div class="slot" id="slot-a" onclick="clearSlot('a')">
+          <span class="slot-icon" id="icon-a">🧪</span>
+          <span class="slot-hint" id="hint-a">Click an element</span>
+        </div>
+        <div class="plus-sign">+</div>
+        <div class="slot" id="slot-b" onclick="clearSlot('b')">
+          <span class="slot-icon" id="icon-b">🧪</span>
+          <span class="slot-hint" id="hint-b">Click an element</span>
+        </div>
+      </div>
+
+      <button class="fuse-btn" id="fuse-btn" onclick="fuse()" disabled>
+        ⚡ FUSE ELEMENTS ⚡
+      </button>
+
+      <div class="result-area">
+        <div class="result-card" id="result-card">
+          <div class="big-icon" id="res-icon"></div>
+          <div class="result-name" id="res-name"></div>
+          <div class="result-formula" id="res-formula"></div>
+          <div class="result-desc" id="res-desc"></div>
+        </div>
+        <div class="no-result" id="no-result">
+          ⚠ No compound formed — try a different combination!
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCOVERIES LOG -->
+    <div class="discoveries">
+      <h3>📜 Discoveries</h3>
+      <div id="discoveries-list">
+        <div class="empty-discoveries">Your discoveries will appear here...</div>
+      </div>
+    </div>
+
+    <!-- ELEMENT CARDS -->
+    <div class="elements-section">
+      <div class="elements-title">Element Cards</div>
+      <div class="filter-tabs" id="filter-tabs">
+        <button class="filter-tab active" onclick="filterCards('all', this)">All</button>
+        <button class="filter-tab" onclick="filterCards('nonmetal', this)">Nonmetal</button>
+        <button class="filter-tab" onclick="filterCards('metal', this)">Metal</button>
+        <button class="filter-tab" onclick="filterCards('alkali', this)">Alkali</button>
+        <button class="filter-tab" onclick="filterCards('transition', this)">Transition</button>
+        <button class="filter-tab" onclick="filterCards('halogen', this)">Halogen</button>
+        <button class="filter-tab" onclick="filterCards('noble', this)">Noble</button>
+      </div>
+      <div class="cards-grid" id="cards-grid"></div>
+    </div>
+
+    <!-- HINT BAR -->
+    <div class="hint-bar">
+      💡 Select <span>2 element cards</span> then click <span>Fuse</span> to discover compounds.
+      Click a filled slot to clear it. Find all <span id="hint-total">?</span> compounds!
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
